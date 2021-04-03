@@ -24,5 +24,33 @@ const str = `<ul>
 // Desarrollar una funcion que me devuelva el total de segundos de los videos de tipo Redux
 // Transformar la cadena en objetos que pueda trabajar con los metodos vistos hasta ahora.
 
+let videos = str.replace('<ul>', ' ').replace('</ul>', ' ').split('="').join(',').split(':').join(',').split('">').join(',').split('</');
+
+
+let videosModified = videos.map(video => (
+    {
+        duracion : {
+            minutos : video.split(',')[1],
+            segundos : video.split(',')[2]
+        },
+        tipo : video.split(',')[3]
+    }
+));
+
+
+videosModified = videosModified.filter( video => video.tipo === 'Redux Video');
+
+
+function sum(arrVideos){
+    let total = 0;
+    for (const video of arrVideos) {
+        total = total + ((parseInt(video.duracion.minutos)*60) + parseInt(video.duracion.segundos));
+    }
+   return total;
+}
+let sumaTotal = sum(videosModified);
+
+console.log(sumaTotal);
+
 
 
