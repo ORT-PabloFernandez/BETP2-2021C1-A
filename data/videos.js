@@ -25,4 +25,24 @@ const str = `<ul>
 // Transformar la cadena en objetos que pueda trabajar con los metodos vistos hasta ahora.
 
 
+let strList = str.split('li data-time="');
+
+function getTotalTime(list){
+  let total = 0;
+  for (let index = 0; index < list.length; index++) {
+    total += parseFloat(list[index])
+    }
+  return total
+}
+
+function getDurationOf(name){
+  let filtrados = strList.filter(item => item.match(name)).map(duracion => {
+    let p = duracion.split(':').map(e => parseFloat(e));
+    return (p[0] * 60) + p[1]
+  })
+  return getTotalTime(filtrados);
+
+}
+
+console.log(getDurationOf("Redux"))
 
