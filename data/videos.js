@@ -26,40 +26,48 @@ const str = `<ul>
 
 function getObjects(str){
   return str
-    .replace('<ul>','')
-    .replace('</ul>','')
-    .split('</li>')
-    .slice(0,-1)
-    .map(video => ({
-      min: parseInt(video.split('"')[1].split(':')[0]),
-      seg: parseInt(video.split('"')[1].split(':')[1]),
-      tipo: video.split('>')[1]
-    }) 
-    )   
+
+
+var elemento = document.getElementById(str);
+var objetos = JSON.parse(elemento);
+
+minutos = function (objetos){
+
+function devolverSegundos(time){
+
+  const min;
+
+posiciones[
+  posicion1,
+  posicion2,
+  posicion3,
+  posicion4
+];
+
+
+posiciones[posicion1]= (time.length-1)
+posiciones[posicion2]= (time.length-2)
+posiciones[posicion3]= (time.length-3)
+posiciones[posicion4]= (time.length-4)
+
+min= posiciones[posicion1] + posiciones[posicion2]*10 + posiciones[posicion3]*60 + posiciones[posicion4]*60*10;
+
+return min;
+ }
+
+const minuteAdd;
+
+for (const nombre of objetos) {
+  if (nombre.name === "Redux Video") {
+    minuuteAdd = devolverSegundos(nombre.data-time);
+
+
+
+  }
+  return minuteAdd;
 }
 
-function getTotalSegundos(videos, tipo){
-  let totalsegundos = 0;
-  videos
-    .filter(video => video.tipo === tipo)
-    .forEach(video => {
-        totalsegundos += video.min * 60 + video.seg;
-    });
 
-  return totalsegundos;
-}
 
-function getTotalSegundos2(videos, tipo){
-  
-  return videos
-    .filter(video => video.tipo === tipo)
-    .reduce((totalSegundos, video) => totalSegundos + (video.min*60 + video.seg), 0);
 
-}
-
-//[1,3,4,5,6].reduce((total, num) => total+ num);
-
-console.log(getTotalSegundos2(getObjects(str), 'Flexbox Video'));
-
-// VOLVEMOS 9:35!!
-
+  }
