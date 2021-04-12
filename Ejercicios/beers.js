@@ -19,3 +19,50 @@ const beers = [
     { name: 'Belgian Wit', abv: 5.4, label: 'https://s3.amazonaws.com/brewerydbapi/beer/3CvVQG/upload_xOMnlK-large.png', type: 'Wheat' },
     { name: 'Stolen Fruit', abv: 4.6, label: 'https://s3.amazonaws.com/brewerydbapi/beer/YGT30k/upload_uVCHP7-large.png', type: 'Wheat' },
   ];
+
+const MIN_ABV = 300;
+const MAX_ABV = 350;
+const SALE = 320;
+
+
+
+printList(setPrice(beers));
+
+printList(setFile_Name(beers));
+
+printList(orderType(beers));
+
+
+function printList(list){
+  list.forEach(element => console.log(element.name,"-", element.abv,"-", element.type,"-", element.price,"-", element.file_name));
+  console.log("*------------------------------------------------------*");
+}
+
+
+function setPrice(beerList){
+  return beerList.map(function(beer) {
+    if (beer.name ==='Purple Iris') {
+      beer.price = SALE;
+    }else if (beer.abv < 5.0) {
+      beer.price = MIN_ABV
+    }else{
+      beer.price = MAX_ABV;
+    }
+    return beer;
+  });
+}
+
+
+function setFile_Name(beerList){
+  listAux = beerList.map(list => list.label.split("/"))
+  for (let i = 0; i < listAux.length; i++) {
+    beerList[i].file_name = listAux[i][listAux[i].length - 1]
+  } 
+  return beerList
+}
+
+
+function orderType(beerList){
+  //Ordena de mayor a menor. Para que sea al revez cambiar el ">" por el "<"
+  return beerList.sort((a,b) => (a.type > b.type) ? -1:1); 
+}
