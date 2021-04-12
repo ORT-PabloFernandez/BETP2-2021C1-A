@@ -19,3 +19,39 @@ const beers = [
     { name: 'Belgian Wit', abv: 5.4, label: 'https://s3.amazonaws.com/brewerydbapi/beer/3CvVQG/upload_xOMnlK-large.png', type: 'Wheat' },
     { name: 'Stolen Fruit', abv: 4.6, label: 'https://s3.amazonaws.com/brewerydbapi/beer/YGT30k/upload_uVCHP7-large.png', type: 'Wheat' },
   ];
+
+  // Punto 1
+  const MIN_ABV_PRICE = 300;
+  const MAX_ABV_PRICE = 350;
+  const BEER_SALE_PRICE = 320;
+  const BEER_SALE_NAME = 'Purple Iris';
+
+  function addPriceToBeers(arrayBeers) {
+    const newArrayBeersWithPrice = arrayBeers.map(beer => {
+      beer.name === BEER_SALE_NAME ? beer.price = BEER_SALE_PRICE : beer.abv >= 5.0 ? beer.price = MAX_ABV_PRICE : beer.price = MIN_ABV_PRICE
+    })
+    return newArrayBeersWithPrice;
+  }
+
+  addPriceToBeers(beers);
+
+  
+  // Punto 2
+  function insertFileNamePropertyOnBeers(arrayBeers) {
+    arrayBeers.forEach(beer => {
+      beer.fileName = beer.label.split('/').pop();
+    })
+  }
+
+  insertFileNamePropertyOnBeers(beers);
+
+
+  // Punto 3
+function orderBeersByType(arrayBeers) {
+  return arrayBeers.sort((a,b) => a.type.localeCompare(b.type));
+}
+
+//orderBeersByType(beers);
+//console.log(beers);
+  
+console.log(orderBeersByType(beers));

@@ -1,3 +1,5 @@
+// prueba
+
 // siempre que pueda debo declarar con const 
 // si es otro caso debo declarar con let
 // solo usar var en legacy 
