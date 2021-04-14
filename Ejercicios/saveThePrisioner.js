@@ -14,11 +14,16 @@
  * @param {Number} s el numero de silla por donde se empieza
  * @return el numero de prisionero que recibe la ultima golosina
  */
-const saveThePrisioner = function(n,m,s){
-
+const saveThePrisoner = function(n,m,s){
+   if( n > m){
+      return s + m -1;
+   } else {
+      return (m % n)  + s - 1; // 19 / 7 = 2 y sobra 5
+   }
 }
 
-// TEST
-console.log(saveThePrisioner(5,2,1) === 2);
-console.log(saveThePrisioner(7,19,2) === 6);
-console.log(saveThePrisioner(3,7,3) === 3);
+// TEST TDD
+console.log(saveThePrisoner(5,2,1) === 2);
+console.log(saveThePrisoner(7,19,2) === 6);
+console.log(saveThePrisoner(3,7,3) === 3);
+//console.log(saveThePrisoner(200000,1000000,3) === );

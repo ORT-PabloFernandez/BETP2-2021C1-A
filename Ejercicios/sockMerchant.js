@@ -11,7 +11,19 @@
  * @return {Number} 
  */
 const sockMerchant = function(colorSocks){
-
+    // [10,10,10,10,20,20,20,30,50]
+    // la estrategia es correr el indice
+    // si ordenamos va los pares juntos
+    let par=0;
+    colorSocks.sort();
+    for (let i = 0; i < colorSocks.length-1; i++) {
+        if(colorSocks[i] === colorSocks[i+1]){
+            par++;
+            i++;
+        }
+    }
+    
+    return par;
 }
 
 // TESTS
